@@ -1,6 +1,4 @@
 <?php
-include("configs/DBConnection.php");
-include("models/Article.php");
 class ArticleService{
     public function getAllArticles(){
        $dbConn = new DBConnection();
