@@ -1,7 +1,6 @@
-<?php
-define('APP_ROOT', dirname(__FILE__, 3));           
-// require APP_ROOT . '/src/functions.php';       
-require APP_ROOT . '/configs/config.php'; 
+<?php   
+define('DEV', true);
+define('APP_ROOT', dirname(__FILE__, 3));        
 
 if (DEV === false) {
     set_exception_handler('handle_exception');        
@@ -9,11 +8,20 @@ if (DEV === false) {
     register_shutdown_function('handle_shutdown');    
 }
 
-spl_autoload_register(function($class)                
-{
-    $path = APP_ROOT . '/models/';                 
-    require $path . $class . '.php';                     
+spl_autoload_register(function($class) {
+    $path = APP_ROOT . '/models/' . $class . '.php';       
+    if (file_exists($path))          
+        require $path;                     
 });
 
-$cms = new CMS($dsn, $username, $password);           
-unset($dsn, $username, $password);                  
+spl_autoload_register(function($class) {
+    $path = APP_ROOT . '/services/' . $class . '.php';       
+    if (file_exists($path))          
+        require $path;                     
+});              
+
+spl_autoload_register(function($class) {
+    $path = APP_ROOT . '/configs/' . $class . '.php';       
+    if (file_exists($path))          
+        require $path;                     
+});      
