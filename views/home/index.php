@@ -40,7 +40,7 @@
                 <img src="./assets/images/songs/<?= $baiviet['hinhanh'] ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-center">
-                        <a href="detail.php?id=<?= $baiviet['ma_bviet'] ?>" class="text-decoration-none"><?= $baiviet['tieude'] ?></a>
+                        <a href="?controller=detail&id=<?= $baiviet['ma_bviet'] ?>" class="text-decoration-none"><?= $baiviet['tieude'] ?></a>
                     </h5>
                 </div>
             </div>
