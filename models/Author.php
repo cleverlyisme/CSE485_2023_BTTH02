@@ -13,4 +13,10 @@ class Author {
 
         return $this->db->runSql($sql)->fetchAll();
     }
+    
+    public function getCount() {
+        $sql = "SELECT COUNT(*) as count FROM tacgia;";
+
+        return $this->db->runSql($sql)->fetch()['count'];
+    }
 }

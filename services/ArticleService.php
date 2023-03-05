@@ -10,10 +10,18 @@ class ArticleService {
         return $this->articleModel->get($id);
     }
 
+    public function getByName($name) {
+        return $this->articleModel->getByName($name);
+    }
+
     public function getAll() {
         return $this->articleModel->getAll();
     }
 
+    public function getCount() {
+        return $this->articleModel->getCount();
+    }
+    
     public function insert() {
         $target_dir = "./assets/images/songs/";
         $target_file = $target_dir . basename($_FILES["imgUpload"]["name"]);

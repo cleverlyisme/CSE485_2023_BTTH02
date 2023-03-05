@@ -43,7 +43,7 @@
                         </li>
                         <?php } ?>
                     </ul>
-                    <form class="d-flex" action="./index.php" method="post" role="search">
+                    <form class="d-flex" action="?controller=home&action=search" method="post" role="search">
                         <input class="form-control me-2" type="search" placeholder="Nội dung cần tìm" aria-label="Search" name="search">
                         <button class="btn btn-outline-success" type="submit">Tìm</button>
                     </form>

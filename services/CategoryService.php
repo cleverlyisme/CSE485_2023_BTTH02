@@ -9,4 +9,8 @@ class CategoryService {
     public function getAll() {
         return $this->categoryModel->getAll();
     }
+
+    public function getCount() {
+        return $this->categoryModel->getCount();
+    }
 }

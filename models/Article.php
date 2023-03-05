@@ -14,10 +14,24 @@ class Article {
        return $this->db->runSql($sql, $arguments)->fetch();
     }
 
+    public function getByName($name) { 
+        $sql = "SELECT ma_bviet, tieude, hinhanh FROM baiviet WHERE tieude REGEXP :tieude;";
+
+       $arguments = ['tieude' => $name];
+
+       return $this->db->runSql($sql, $arguments)->fetchAll();
+    }
+
     public function getAll(){
         $sql = "SELECT ma_bviet, tieude, ten_bhat, ten_tloai, tomtat, ten_tgia, ngayviet, hinhanh FROM baiviet LEFT JOIN theloai ON baiviet.ma_tloai = theloai.ma_tloai LEFT JOIN tacgia ON baiviet.ma_tgia = tacgia.ma_tgia;";
 
         return $this->db->runSql($sql)->fetchAll();
+    }
+    
+    public function getCount() {
+        $sql = "SELECT COUNT(*) as count FROM baiviet;";
+
+        return $this->db->runSql($sql)->fetch()['count'];
     }
 
     public function insertWithoutImg($arguments) {

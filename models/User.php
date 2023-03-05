@@ -13,4 +13,10 @@ class User {
 
        return $this->db->runSql($sql, $arguments)->fetch();
     }
+
+    public function getCount() {
+        $sql = "SELECT COUNT(*) as count FROM users;";
+
+        return $this->db->runSql($sql)->fetch()['count'];
+    }
 }

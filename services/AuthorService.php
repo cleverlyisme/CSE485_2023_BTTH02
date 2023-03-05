@@ -9,4 +9,8 @@ class AuthorService {
     public function getAll() {
         return $this->authorModel->getAll();
     }
+    
+    public function getCount() {
+        return $this->authorModel->getCount();
+    }
 }
