@@ -1,7 +1,6 @@
 <?php
     $paths = [
-        ['name' => 'Trang chủ', 'path' => 'index.php'],
-        ['name' => 'Đăng nhập', 'path' => 'login.php']
+        ['name' => 'Đăng nhập', 'path' => '?controller=auth']
     ]
 ?>
 <!DOCTYPE html>
@@ -22,7 +21,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary shadow p-3 bg-white rounded">
             <div class="container-fluid">
                 <div class="my-logo">
-                    <a class="navbar-brand" href="./index.php">
+                    <a class="navbar-brand" href="?controller=home">
                         <img src="./assets/images/logo.png" alt="" class="img-fluid">
                     </a>
                 </div>
@@ -32,6 +31,11 @@
                 </button>
                 <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link <?= count(array_filter($paths, function($path) {
+                                return str_contains($_SERVER['REQUEST_URI'], $path['path']);
+                            })) === 0 ? 'active' : '' ?>" aria-current="page" href="?controller=Home">Trang chủ</a>
+                        </li>
                         <?php foreach($paths as $path) { ?>
                         <li class="nav-item">
                             <a class="nav-link <?= str_contains($_SERVER['REQUEST_URI'], $path['path']) ? 'active' : '' ?>" aria-current="page"

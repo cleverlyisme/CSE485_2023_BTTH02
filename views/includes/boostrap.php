@@ -1,6 +1,9 @@
 <?php   
 define('DEV', true);
-define('APP_ROOT', dirname(__FILE__, 3));        
+$this_folder   = substr(__DIR__, strlen($_SERVER['DOCUMENT_ROOT']));
+$parent_folder = dirname($this_folder, 2);        
+define("DOC_ROOT", $parent_folder . '/views/');                   
+define('APP_ROOT', dirname(__FILE__, 3));     
 
 if (DEV === false) {
     set_exception_handler('handle_exception');        
@@ -11,17 +14,17 @@ if (DEV === false) {
 spl_autoload_register(function($class) {
     $path = APP_ROOT . '/models/' . $class . '.php';       
     if (file_exists($path))          
-        require $path;                     
+        include_once $path;                     
 });
 
 spl_autoload_register(function($class) {
     $path = APP_ROOT . '/services/' . $class . '.php';       
     if (file_exists($path))          
-        require $path;                     
+        include_once $path;                     
 });              
 
 spl_autoload_register(function($class) {
     $path = APP_ROOT . '/configs/' . $class . '.php';       
     if (file_exists($path))          
-        require $path;                     
+        include_once $path;                     
 });      

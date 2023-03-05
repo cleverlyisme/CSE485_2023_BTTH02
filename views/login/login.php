@@ -1,20 +1,10 @@
 <?php
     include_once './views/includes/boostrap.php';
     include APP_ROOT . '/views/includes/header.php';
-
-    session_start();
-    $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
-    $password = isset($_SESSION['password']) ? $_SESSION['password'] : '';
-
-    // if (isset($_SESSION['user'])) header('Location:' . APP_ROOT . '?controller=admin');
-
-    if(isset($_GET['error'])) {
-        echo "<script>alert({$_GET['error']})</script>";
-    }
 ?>
 </header>
 <main class="container mt-5 mb-5">
-    <form action="?controller=login&action=login" method="POST">
+    <form action="?controller=auth&action=login" method="POST">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
