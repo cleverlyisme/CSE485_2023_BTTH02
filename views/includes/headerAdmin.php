@@ -1,15 +1,14 @@
 <?php
     $paths = [
-        ['name' => 'Trang chủ', 'path' => '../home/index.php', 'include' => 'index.php'],
-        ['name' => 'Trang ngoài', 'path' => '../../index.php', 'include' => 'homepage'],
-        ['name' => 'Thể loại', 'path' => '../category/category.php', 'include' => 'category.php'],
-        ['name' => 'Tác giả', 'path' => '../author/author.php', 'include' => 'author.php'],
-        ['name' => 'Bài viết', 'path' => '../article/article.php', 'include' => 'article.php'],
+        ['name' => 'Trang ngoài', 'path' => '?controller=home', 'include' => 'homepage'],
+        ['name' => 'Thể loại', 'path' => '?controller=category', 'include' => 'category'],
+        ['name' => 'Tác giả', 'path' => '?controller=author', 'include' => 'author'],
+        ['name' => 'Bài viết', 'path' => '?controller=article', 'include' => 'article'],
     ];
 
     session_start();
     if(!isset($_SESSION['user'])){
-        header("Location:../../login.php");
+        header("Location: ?controller=auth");
     }
 ?>
 <!DOCTYPE html>
@@ -41,6 +40,11 @@
                 </button>
                 <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link <?= count(array_filter($paths, function($path) {
+                                return str_contains($_SERVER['REQUEST_URI'], $path['path']);
+                            })) === 0 ? 'active' : '' ?>" aria-current="page" href="?controller=admin">Trang chủ</a>
+                        </li>
                         <?php foreach($paths as $path) { ?>
                         <li class="nav-item">
                             <a class="nav-link <?= str_contains($_SERVER['REQUEST_URI'], $path['include']) ? 'active' : '' ?>" aria-current="page"
@@ -48,7 +52,7 @@
                         </li>
                         <?php } ?>
                     </ul>
-                    <a href="../process/logout.process.php">
+                    <a href="?controller=auth&action=logout">
                         <div class="align-self-end">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-right"
                                 viewBox="0 0 16 16">

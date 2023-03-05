@@ -1,9 +1,24 @@
 <?php
 include 'views/includes/boostrap.php';
-class LoginController{
-    private $user;
+class AuthController {
+    private $userService;
+
+    public function __construct() {
+        $this->userService = new UserService();
+    }
 
     public function index(){
+        session_start();
+        
+        $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+        $password = isset($_SESSION['password']) ? $_SESSION['password'] : '';
+
+        if (isset($_SESSION['user'])) header('Location: ?controller=admin');
+
+        if(isset($_GET['error'])) {
+            echo "<script>alert({$_GET['error']})</script>";
+        }
+
         include("views/login/login.php");
     }
 
@@ -15,9 +30,7 @@ class LoginController{
             $password = $_POST['password'];
             $remember = $_POST['remember'];
 
-            $this->user = new User($username, $password);
-
-            $data = $this->user->login();
+            $data = $this->userService->login($username, $password);
 
             if($data){
                 if ($remember) {
@@ -35,4 +48,13 @@ class LoginController{
             }
         }
     }
+
+    public function logout() {
+        session_start();
+        if (isset($_SESSION['user'])) {
+            unset($_SESSION['user']);
+            // session_destroy();
+            header("Location: ?controller=auth");
+        }
+    } 
 }

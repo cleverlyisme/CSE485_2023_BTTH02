@@ -1,8 +1,7 @@
 <?php
-include("services/ArticleService.php");
+include 'views/includes/boostrap.php';
 class HomeController{
     public function index(){
-        $articelService = new ArticleService();
         include("views/home/index.php");
     }
 }

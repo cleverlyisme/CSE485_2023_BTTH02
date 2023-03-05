@@ -1,16 +1,12 @@
 <?php
 class UserService {
-    private $db;
+    private $userModel;
 
     public function __construct() {
-        $this->db = new Database();                               
+        $this->userModel = new User();                               
     }
 
-    public function get($username, $password){
-       $sql = "SELECT * FROM users WHERE username=:username and password=:password";
-
-       $arguments = ['username' => $username, 'password' => $password];
-
-       return $this->db->runSql($sql, $arguments)->fetch();
+    public function login($username, $password) {
+        return $this->userModel->get($username, $password);
     }
 }
