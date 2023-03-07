@@ -42,4 +42,9 @@ class Author {
         
        return $this->db->runSql($sql, $arguments);
     }
+    public function delete($arguments) {
+        $sql = "DELETE FROM tacgia WHERE ma_tgia=:ma_tgia;";
+
+       return $this->db->runSql($sql, $arguments);
+    }
 }
