@@ -101,4 +101,14 @@ public function update() {
         }
     }
 }
+public function delete() {
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+
+    if (!$id) header("Location: ?controller=author");
+
+   $result = $this->authorModel->delete(['ma_tgia' => $id]);
+
+   if ($result) header("Location: ?controller=author");
+    else header("Location: ?controller=author&error='Xóa thất bại'");
+}
 }
