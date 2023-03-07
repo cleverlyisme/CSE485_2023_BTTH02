@@ -21,9 +21,9 @@
                     </div>
                     <div class="input-group mt-3 mb-3">
                         <span class="input-group-text" id="lblCatName">Hình tác giả</span>
-                        <input type="file" name="hinh_tgia" class="form-control" name="txtCatName">
+                        <input type="file" name="imgUpload" class="form-control" name="txtCatName">
                     </div>
-                    <button class="btn btn-success" type="submit">Thêm</button>
+                    <input type="submit" name="submit" value="Thêm" class="btn btn-success">
                     <a href="?controller=author" class="btn btn-warning ">Quay lại</a>
                 </form>
             </div>

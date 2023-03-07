@@ -29,7 +29,8 @@
                         <td><?= $row['ten_tgia'] ?></td>
                         <td class="w-25"><img src=<?= $row['hinh_tgia'] ?> alt="" class="w-25 "></td>
                         <td>
-                            <a href="?controller=author&action=edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="<?= "?controller=author&action=edit&id=" . $row['ma_tgia'] ?>"><i
+                                    class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                         <td>
                             <a href="author.php?id="><i class="fa-solid fa-trash"></i></a>
