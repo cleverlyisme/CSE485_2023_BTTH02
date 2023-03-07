@@ -33,7 +33,8 @@
                                     class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                         <td>
-                            <a href="author.php?id="><i class="fa-solid fa-trash"></i></a>
+                            <a href="<?= "?controller=author&action=delete&id=" . $row['ma_tgia'] ?>"><i
+                                    class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php } ?>
